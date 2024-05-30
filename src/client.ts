@@ -1,10 +1,6 @@
 import { Client, IntentsBitField } from 'discord.js';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const { Flags } = IntentsBitField;
-const { CLIENT_TOKEN } = process.env;
 
 const client = new Client({
     intents: [
@@ -13,4 +9,4 @@ const client = new Client({
     ]
 });
 
-client.login(CLIENT_TOKEN);
+export default client;
