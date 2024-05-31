@@ -1,17 +1,17 @@
 import fg from 'fast-glob';
 import client from '../client';
-import { EventGeneric } from '../interfaces/EventGeneric';
+import { EventInterface } from '../interfaces/Event.generic';
 
 export class EventController {
-    getFilesPropsFromEventsFolder (): Promise<EventGeneric[]> {
+    getFilesPropsFromEventsFolder (): Promise<EventInterface[]> {
         return new Promise(async (resolve, reject) => {
             const files = await fg('src/events/**/**.event.ts');
             
-            let propsArr: EventGeneric[] = [];
+            let propsArr: EventInterface[] = [];
 
             for (let i = 0; i < files.length; i++) {
                 const file = files[i];
-                const props: EventGeneric = (await import(`../../${file}`)).default;
+                const props: EventInterface = (await import(`../../${file}`)).default;
 
                 propsArr.push(props);
             }

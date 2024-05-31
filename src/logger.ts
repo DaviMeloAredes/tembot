@@ -1,7 +1,7 @@
 import fs from 'fs';
 import date from 'date-and-time';
 
-import { LogLevels, LoggerAdapterInterface } from "./adapters/LoggerAdapter";
+import { LogLevels, LoggerAdapterInterface } from "./adapters/Logger.adapter";
 
 class FileLogger {
     readLogFile(path: string) {
@@ -27,8 +27,14 @@ class FileLogger {
 const fileLogger = new FileLogger();
 
 export class Logger implements LoggerAdapterInterface {
-    log(message: string, level: LogLevels): void {
-        const _output = `[${level}] - ${message}\n`;
+    log(message: string | Error, level: LogLevels): void {
+        let _output = '';
+
+        if (typeof message == 'string') {
+            _output =  `[${level}] - ${message}\n`;
+        } else {
+            _output = `[${level}] - ${message.stack}\n`;
+        }
 
         fileLogger.createLogFile(_output);
 

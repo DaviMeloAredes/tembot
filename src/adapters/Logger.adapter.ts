@@ -1,6 +1,6 @@
 import { Logger } from "../logger";
 
-export type LogLevels = 'info' | 'error';
+export type LogLevels = 'info' | 'error' | 'load-process';
 
 export interface LoggerAdapterInterface {
     log(message: string, level: LogLevels): void;

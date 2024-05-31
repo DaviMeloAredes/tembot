@@ -1,13 +1,11 @@
+import loggerAdapter from "../adapters/Logger.adapter";
 import { Client } from "discord.js";
-import loggerAdapter from "../adapters/LoggerAdapter";
-import { EventGeneric, EventInterface } from "../interfaces/EventGeneric";
+import { EventInterface } from "../interfaces/Event.generic";
 
-class Ready extends EventGeneric {
+class Ready implements EventInterface {
     name: string; 
     
     constructor () {
-        super();
-
         this.name = 'ready';
     }
 
