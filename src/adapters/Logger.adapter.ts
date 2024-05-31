@@ -3,7 +3,7 @@ import { Logger } from "../logger";
 export type LogLevels = 'info' | 'error' | 'load-process';
 
 export interface LoggerAdapterInterface {
-    log(message: string, level: LogLevels): void;
+    log(message: string | Error, level: LogLevels): void;
 }
 
 class LoggerAdapter implements LoggerAdapterInterface {
@@ -13,7 +13,7 @@ class LoggerAdapter implements LoggerAdapterInterface {
         this.logger = new Logger();
     }
         
-    log(message: string, level: LogLevels): void {
+    log(message: string | Error, level: LogLevels): void {
         this.logger.log(message, level);
     }
 }

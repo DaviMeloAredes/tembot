@@ -1,11 +1,11 @@
 import { CommandInteraction } from "discord.js";
 
-type InteractionChoice = {
+export type InteractionChoice = {
     name: string,
     value: string
 };
 
-type InteractionOption = {
+export type InteractionOption = {
     name: string,
     description: string,
     type: number,
